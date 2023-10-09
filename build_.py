@@ -15,9 +15,6 @@ include_dirs = [
     top,
     os.path.join(top, "skranger"),
     os.path.join(top, "skranger", "ranger", "src"),
-    os.path.join(top, "skranger", "ranger", "src", "Forest"),
-    os.path.join(top, "skranger", "ranger", "src", "Tree"),
-    os.path.join(top, "skranger", "ranger", "src", "utility"),
     np.get_include(),
 ]
 
