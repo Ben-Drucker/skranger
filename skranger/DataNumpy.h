@@ -1,6 +1,6 @@
-#include "globals.h"
-#include "utility.h"
-#include "Data.h"
+#include "./ranger/src/globals.h"
+#include "./ranger/src/utility.h"
+#include "./ranger/src/Data.h"
 
 #ifndef DATANUMPY_H_
 #define DATANUMPY_H_
