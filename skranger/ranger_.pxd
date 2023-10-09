@@ -58,10 +58,10 @@ cdef extern from "./ranger/src/globals.h" namespace "ranger":
         TREE_PROBABILITY = 9
 
 # Inherit from the Data class so that we can pass numpy array based data objects
-cdef extern from "./ranger/src/utility/Data.cpp":
+cdef extern from "./ranger/src/Data.cpp":
     pass
 
-cdef extern from "./ranger/src/utility/Data.h" namespace "ranger":
+cdef extern from "./ranger/src/Data.h" namespace "ranger":
     cdef cppclass Data:
         Data() except +
         double get_x(size_t row, size_t col)
