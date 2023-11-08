@@ -368,6 +368,7 @@ class RangerMixin:
             False,  # write_forest
             0,  # importance_mode
             0,  # min_node_size
+            1, 
             [],  # split_select_weights
             False,  # use_split_select_weights
             [],  # always_split_feature_names
@@ -397,7 +398,8 @@ class RangerMixin:
             False,  # use_inbag
             [],  # regularization_factor_
             False,  # use_regularization_factor_
-            False,  # regularization_usedepth
+            False,  # regularization_usedepth,
+            False
         )
         return forest
 

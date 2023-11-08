@@ -47,8 +47,8 @@ def create_extension(module_name):
         sources=[path],
         include_dirs=include_dirs,
         language="c++",
-        extra_compile_args=["-std=c++11", "-Wall"],
-        extra_link_args=["-std=c++11", "-g"],
+        extra_compile_args=["-std=c++14", "-Wall"],
+        extra_link_args=["-std=c++14", "-g"],
         define_macros=[("NPY_NO_DEPRECATED_API", "NPY_1_7_API_VERSION")],
     )
 

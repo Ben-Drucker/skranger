@@ -111,6 +111,8 @@ class RangerTreeClassifier(BaseRangerTree, ClassifierMixin):
         self.mtry = mtry
         self.importance = importance
         self.min_node_size = min_node_size
+        self.min_bucket = 1
+        self.node_stats = False
         self.max_depth = max_depth
         self.replace = replace
         self.sample_fraction = sample_fraction
@@ -277,6 +279,7 @@ class RangerTreeClassifier(BaseRangerTree, ClassifierMixin):
             True,  # write_forest
             self.importance_mode_,
             self.min_node_size,
+            1,
             split_select_weights,
             use_split_select_weights,
             always_split_features,  # always_split_variable_names
@@ -307,6 +310,7 @@ class RangerTreeClassifier(BaseRangerTree, ClassifierMixin):
             self.regularization_factor_,
             False,  # use_regularization_factor
             self.regularization_usedepth,
+            False
         )
         self.ranger_class_order_ = np.argsort(
             np.array(self.ranger_forest_["forest"]["class_values"]).astype(int)
@@ -350,6 +354,7 @@ class RangerTreeClassifier(BaseRangerTree, ClassifierMixin):
             False,  # write_forest
             self.importance_mode_,
             self.min_node_size,
+            1,
             [],  # split_select_weights
             False,  # use_split_select_weights
             [],  # always_split_variable_names
@@ -380,6 +385,7 @@ class RangerTreeClassifier(BaseRangerTree, ClassifierMixin):
             self.regularization_factor_,
             self.use_regularization_factor_,
             self.regularization_usedepth,
+            False
         )
         predictions = np.atleast_2d(np.array(result["predictions"]))
         return predictions[:, self.ranger_class_order_]

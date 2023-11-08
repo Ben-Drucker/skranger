@@ -74,6 +74,7 @@ cpdef dict ranger(
     bool write_forest,
     ranger_.ImportanceMode importance_mode,
     unsigned int min_node_size,
+    unsigned int min_bucket,
     vector[vector[double]]& split_select_weights,
     bool use_split_select_weights,
     vector[string]& always_split_variable_names,
@@ -104,6 +105,7 @@ cpdef dict ranger(
     vector[double]& regularization_factor,
     bool use_regularization_factor,
     bool regularization_usedepth,
+    bool node_stats
 ):
     """Cython function interface to ranger.
     
@@ -197,6 +199,7 @@ cpdef dict ranger(
             num_threads,
             importance_mode,
             min_node_size,
+            1,
             split_select_weights,
             always_split_variable_names,
             prediction_mode,
@@ -218,6 +221,7 @@ cpdef dict ranger(
             max_depth,
             regularization_factor,
             regularization_usedepth,
+            False
         )
 
         if prediction_mode:

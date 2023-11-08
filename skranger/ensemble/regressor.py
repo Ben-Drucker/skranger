@@ -151,6 +151,8 @@ class RangerForestRegressor(BaseRangerForest, RegressorMixin, BaseEstimator):
         self.save_memory = save_memory
         self.seed = seed
         self.enable_tree_details = enable_tree_details
+        self.min_bucket = 1
+        self.node_stats = False
 
     @property
     def estimators_(self):
@@ -241,6 +243,7 @@ class RangerForestRegressor(BaseRangerForest, RegressorMixin, BaseEstimator):
             True,  # write_forest
             self.importance_mode_,
             self.min_node_size,
+            1,
             split_select_weights,
             use_split_select_weights,
             always_split_features,  # always_split_feature_names
@@ -271,6 +274,7 @@ class RangerForestRegressor(BaseRangerForest, RegressorMixin, BaseEstimator):
             self.regularization_factor_,
             False,  # use_regularization_factor
             self.regularization_usedepth,
+            False
         )
         sample_weight = sample_weight if len(sample_weight) > 0 else np.ones(len(X))
 

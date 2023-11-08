@@ -133,7 +133,8 @@ class RangerForestSurvival(BaseRangerForest, BaseEstimator):
         self.n_jobs = n_jobs
         self.seed = seed
         self.enable_tree_details = enable_tree_details
-
+        self.min_bucket = 1
+        self.node_stats = False 
     @property
     def estimators_(self):
         try:
@@ -229,6 +230,7 @@ class RangerForestSurvival(BaseRangerForest, BaseEstimator):
             True,  # write_forest
             self.importance_mode_,
             self.min_node_size,
+            1,
             split_select_weights,
             use_split_select_weights,
             always_split_features,  # always_split_variable_names
@@ -259,6 +261,7 @@ class RangerForestSurvival(BaseRangerForest, BaseEstimator):
             self.regularization_factor_,
             False,  # use_regularization_factor
             self.regularization_usedepth,
+            False
         )
         self.event_times_ = np.array(
             self.ranger_forest_["forest"]["unique_death_times"]
@@ -297,6 +300,7 @@ class RangerForestSurvival(BaseRangerForest, BaseEstimator):
             False,  # write_forest
             self.importance_mode_,
             self.min_node_size,
+            1,
             [],
             False,  # use_split_select_weights
             [],  # always_split_variable_names
@@ -327,6 +331,7 @@ class RangerForestSurvival(BaseRangerForest, BaseEstimator):
             self.regularization_factor_,
             self.use_regularization_factor_,
             self.regularization_usedepth,
+            False
         )
         return result
 
